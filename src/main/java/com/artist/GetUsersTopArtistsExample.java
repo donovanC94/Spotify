@@ -1,3 +1,6 @@
+package com.artist;
+
+import com.authorization.AuthorizationCodeExample;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
@@ -15,8 +18,8 @@ public class GetUsersTopArtistsExample {
 
 
     static {
-        accessToken = AuthorizationCodeExample.spotifyApi.getAccessToken();
-        refreshToken = AuthorizationCodeExample.spotifyApi.getRefreshToken();
+        accessToken = AuthorizationCodeExample.getSpotifyApi().getAccessToken();
+        refreshToken = AuthorizationCodeExample.getSpotifyApi().getRefreshToken();
     }
 
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
@@ -36,6 +39,11 @@ public class GetUsersTopArtistsExample {
             final Paging<Artist> artistPaging = getUsersTopArtistsRequest.execute();
 
             System.out.println("Total: " + artistPaging.getTotal());
+
+            for(Artist artist : artistPaging.getItems()) {
+                System.out.println(artist.getName());
+            }
+
         } catch (IOException | SpotifyWebApiException e) {
             System.out.println("Error: " + e.getMessage());
         }

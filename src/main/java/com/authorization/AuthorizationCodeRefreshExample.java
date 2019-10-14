@@ -1,3 +1,5 @@
+package com.authorization;
+
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.credentials.AuthorizationCodeCredentials;
@@ -14,7 +16,7 @@ public class AuthorizationCodeRefreshExample {
     private static final String refreshToken;
 
     static {
-        refreshToken = AuthorizationCodeExample.spotifyApi.getRefreshToken();
+        refreshToken = AuthorizationCodeExample.getSpotifyApi().getRefreshToken();
     }
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)

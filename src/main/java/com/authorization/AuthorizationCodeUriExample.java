@@ -1,9 +1,10 @@
+package com.authorization;
+
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.requests.authorization.authorization_code.AuthorizationCodeUriRequest;
 
 import java.net.URI;
-import java.net.URL;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
@@ -20,22 +21,12 @@ public class AuthorizationCodeUriExample {
             .build();
     private static final AuthorizationCodeUriRequest authorizationCodeUriRequest = spotifyApi.authorizationCodeUri()
 //          .state("x4xkmn9pu3j6ukrs8n")
-//          .scope("user-read-birthdate,user-read-email")
+            .scope("user-library-read, user-top-read, playlist-modify-public")
 //          .show_dialog(true)
             .build();
 
     public static void authorizationCodeUri_Sync() throws Exception {
         final URI uri = authorizationCodeUriRequest.execute();
-
-        URL testURL = uri.toURL();
-        String uriString = uri.toString();
-        String urlString = testURL.toString();
-
-        System.out.println("URI = " + uriString);
-        System.out.println("URL = " + urlString);
-
-        //unneeded.MyServlet servlet = new unneeded.MyServlet();
-        //servlet.doGet();
 
         System.out.println("URI: " + uri.toString());
     }

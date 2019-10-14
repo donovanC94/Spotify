@@ -1,3 +1,6 @@
+package com.track;
+
+import com.authorization.AuthorizationCodeExample;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Track;
@@ -10,10 +13,10 @@ import java.util.concurrent.CompletionException;
 
 public class GetTrackExample {
     private static final String accessToken;
-    private static final String id = "1nGJuMCIMDeOAy0MAzKpQC";
+    private static final String id = "7qEHsqek33rTcFNT9PFqLf";
 
     static {
-        accessToken = AuthorizationCodeExample.spotifyApi.getAccessToken();
+        accessToken = AuthorizationCodeExample.getSpotifyApi().getAccessToken();
     }
 
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()

@@ -1,3 +1,5 @@
+package com.authorization;
+
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.SpotifyHttpManager;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
@@ -23,7 +25,11 @@ public class AuthorizationCodeExample {
         code = scan.next( );
     }
 
-    static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
+    {
+        System.out.println("test");
+    }
+
+    private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
             .setClientSecret(clientSecret)
             .setRedirectUri(redirectUri)
@@ -64,5 +70,9 @@ public class AuthorizationCodeExample {
         } catch (CancellationException e) {
             System.out.println("Async operation cancelled.");
         }
+    }
+
+    public static SpotifyApi getSpotifyApi() {
+        return spotifyApi;
     }
 }
