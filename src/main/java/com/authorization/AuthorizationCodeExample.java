@@ -21,12 +21,8 @@ public class AuthorizationCodeExample {
 
     static {
         System.out.println("Input the code: ");
-        Scanner scan = new Scanner( System.in );
-        code = scan.next( );
-    }
-
-    {
-        System.out.println("test");
+        Scanner scan = new Scanner(System.in);
+        code = scan.next();
     }
 
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
