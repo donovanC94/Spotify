@@ -1,6 +1,8 @@
 package com.user;
 
-import com.track.SearchTracks;
+import com.search.artist.ArtistTopTracks;
+import com.search.artist.SearchArtists;
+import com.search.track.SearchTracks;
 
 import java.util.Scanner;
 
@@ -45,6 +47,14 @@ public class UserInteraction {
 
     public static void searchArtist() {
         System.out.println("Search artist");
+        Scanner scan = new Scanner(System.in);
+        String artistSearch = scan.next();
+        String artistId = SearchArtists.searchArtists_Sync(artistSearch);
+
+        System.out.println("Artist top tracks:");
+        System.out.println();
+        ArtistTopTracks.getArtistsTopTracks_Sync(artistId);
+
     }
 
     public static void generatePlaylist() {

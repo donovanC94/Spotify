@@ -1,6 +1,6 @@
 package com.artist;
 
-import com.authorization.AuthorizationCodeExample;
+import com.authorization.oauth2.AuthorizationCodeExample;
 import com.wrapper.spotify.SpotifyApi;
 import com.wrapper.spotify.exceptions.SpotifyWebApiException;
 import com.wrapper.spotify.model_objects.specification.Artist;
@@ -13,25 +13,17 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CompletionException;
 
 public class GetUsersTopArtistsExample {
-    private static final String accessToken;
-    private static final String refreshToken;
-
-
-    static {
-        accessToken = AuthorizationCodeExample.getSpotifyApi().getAccessToken();
-        refreshToken = AuthorizationCodeExample.getSpotifyApi().getRefreshToken();
-    }
 
     private static final SpotifyApi spotifyApi = new SpotifyApi.Builder()
-            .setAccessToken(accessToken)
+           // .setAccessToken(ClientCredentialsExample.getAccessToken())
+            .setAccessToken(AuthorizationCodeExample.getSpotifyApi().getAccessToken())
             .setClientId("7fbda6272b7d42228251330f00840933")
             .setClientSecret("a3c949ae48314c5bb5ab05d6114e6e39")
-            .setRefreshToken(refreshToken)
             .build();
     private static final GetUsersTopArtistsRequest getUsersTopArtistsRequest = spotifyApi.getUsersTopArtists()
             .limit(10)
             .offset(0)
-            .time_range("medium_term")
+            .time_range("long_term")
             .build();
 
     public static void getUsersTopArtists_Sync() {

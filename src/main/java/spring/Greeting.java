@@ -2,19 +2,27 @@ package spring;
 
 public class Greeting {
 
-    private final long id;
-    private final String content;
+    private long id;
+    private String code;
+    private String state;
 
-    public Greeting(long id, String content) {
+    public Greeting() { }
+    
+    public Greeting(long id, String content, String state) {
         this.id = id;
-        this.content = content;
+        this.code = content;
+        this.state = state;
     }
 
     public long getId() {
         return id;
     }
 
-    public String getContent() {
-        return content;
+    public String getCode() {
+        return code;
+    }
+    
+    public String getState() {
+    	return state;
     }
 }
